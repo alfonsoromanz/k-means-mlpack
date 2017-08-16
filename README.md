@@ -1,12 +1,12 @@
-Install Dependencies:
-sudo apt-get install liblapack-dev
-sudo apt-get install libblas-dev
-sudo apt-get install libboost-dev
-sudo apt-get install libarmadillo-dev
-sudo apt-get install libboost-all-dev
+<h2>Install Dependencies:</h2>
+sudo apt-get install liblapack-dev<br>
+sudo apt-get install libblas-dev<br>
+sudo apt-get install libboost-dev<br>
+sudo apt-get install libarmadillo-dev<br>
+sudo apt-get install libboost-all-dev<br>
 
-Install MLPack:
+<h2>Install MLPack:</h2>
 sudo apt-get install libmlpack-dev
 
-Compile:
+<h2>Compile:</h2>
 
