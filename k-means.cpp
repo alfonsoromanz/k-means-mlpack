@@ -4,45 +4,56 @@
 
 using namespace mlpack;
 using namespace mlpack::kmeans;
-//using namespace mlpack::metric;
+using namespace mlpack::metric;
 
 int main()
 {
-    
+
     arma::mat data; // Alojara el Dataset
 
     arma::Row<size_t> assignments; // Tendra las asignaciones finales
 
-    arma::mat centroids; // Tendra los centroides finalez
-    
+    arma::mat centroids; // Tendra los centroides finales
+
     /*
      * Carga el dataset especificado en la matriz "data"
      */
-    data::Load("data.csv", data, true);
+    data::Load("g2.txt", data, true);
 
-    
-    /* 
+
+    /*
      * Parametros del algoritmo
      */
 
     int max_iterations = 100;
-    int k = 2;
+    size_t k = 2;
 
 
     /*
      * Modelo k-means
      */
 
-    KMeans<> k_means(max_iterations);
+    KMeans<ChebyshevDistance> k_means(max_iterations);
 
-    k_means.Cluster(data, k, centroids);
-    
+    k_means.Cluster(data, k, assignments, centroids);
 
-    
-    // Print out each neighbor and its distance.
-    for (size_t i = 0; i < centroids.n_elem; ++i)
+
+    // Muestra asignaciones
+    for (size_t i = 0; i < assignments.n_elem; ++i)
     {
-        std::cout << "Centroide " << i << " es "
-        << centroids[i] << ".\n";
+        std::cout << "El punto " << i << " se asigno al cluster: "
+        << assignments[i] << ".\n";
     }
+
+    // Muestra los centroides
+    /*
+    for (size_t i = 0; i < centroids.n_cols; ++i) {
+      std::cout << "Centroide " << i << " es: (";
+      for (size_t j = 0; j < centroids.n_rows; ++j) {
+          std::cout << centroids[i][j] << ", ";
+      }
+      std::cout << ".\n";
+    }*/
+
+    return 0;
 }
