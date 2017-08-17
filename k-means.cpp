@@ -55,5 +55,8 @@ int main()
       std::cout << ".\n";
     }*/
 
+    data::Save("assignments_result.csv", assignments, true);
+    data::Save("centroids_result.csv", centroids, true);
+
     return 0;
 }
